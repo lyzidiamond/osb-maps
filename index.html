@@ -1,0 +1,354 @@
+<!DOCTYPE html><html><head><title>Build a web map with open source tools!</title><meta charset='utf-8'><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<link href='big.css' rel='stylesheet' type='text/css' />
+<style>
+  .center {
+    text-align: center;
+  }
+  .quote {
+    font-family: serif;
+    letter-spacing: 2px;
+  }
+  .puppy {
+    background-image: url(./images/puppy.gif);
+    background-repeat: no-repeat;
+    background-position: center 5px;
+    background-size: 100%;
+    text-shadow: 3px 3px 5px #000;
+  }
+.iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.hiframe iframe {
+  position: absolute;
+  top: calc(0 - 200px);
+  
+    width: calc(100% + 1000px);
+    min-height: calc(100% + 800px);
+}
+
+.mapquest {
+    background-image: url(./images/2-Ridgefield-CT-Mapquest-out.jpg);
+    background-repeat: no-repeat;
+    background-position: center 1px;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .old-google {
+    background-image: url(./images/3-old-google-maps-2.JPG);
+    background-repeat: no-repeat;
+    background-position: center 30px;
+  }
+  .slippy-map {
+    background-image: url(./images/slippy-map.gif);
+    background-repeat: no-repeat;
+    background-position: center 1px;
+    background-size: 100%;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .tile-loading {
+    background-image: url(./images/tiles-loading.gif);
+    background-repeat: no-repeat;
+    background-position: center 1px;
+    background-size: 100%;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .zoom0 {
+    background-image: url(./images/zoom0.png);
+    background-repeat: no-repeat;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .geojson {
+    background-image: url(./images/geojson.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .init {
+    background-image: url(./images/init.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .mindblown {
+    background-image: url(./images/mindblown.gif);
+  }
+  .mapbox-github-public {
+    background-image: url(./images/mapbox-github-public.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .marker1 {
+    background-image: url(./images/marker1.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .studio {
+    background-image: url(./images/studio.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .osm {
+    background-image: url(./images/osm.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .addtomap {
+    background-image: url(./images/addtomap.png);
+    background-repeat: no-repeat;
+    background-size: 75%;
+    background-position: center 25px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+.stations {
+    background-image: url(./images/stations.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .turf {
+    background-image: url(./images/turf.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .marker2 {
+    background-image: url(./images/marker2.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .taginfo {
+    background-image: url(./images/taginfo.png);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .zoom1 {
+    background-image: url(./images/zoom1.png);
+    background-repeat: no-repeat;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+  .zoom2345 {
+    background-image: url(./images/zoom2-3-4-5.png);
+    background-repeat: no-repeat;
+    background-position: center 1px;
+    background-color: white;
+    text-shadow: 3px 3px 5px #222;
+  }
+
+</style>
+<script src='big.js'></script>
+</head><body>
+
+<div>Build a <em>web map</em> with <strong>open source</strong> tools!<br>Lyzi Diamond<br>OSB 2015</div>
+<div><strong>Oh my goodness</strong>, this talk was <em>hard to write</em>.</div>
+<div>I rewrote it a <em>bunch</em> of times.</div>
+<div><strong>Writer's block</strong> happens with <em>conference talks too</em>, you know.</div>
+<div>So I'm just going <strong>stream of consciousness</strong> here.</div>
+<div><em>We'll see</em> how it goes.</div>
+<div>So <strong>my goal</strong> today is for you to <em>walk away</em> understanding a <strong>little</strong> about <em>open source web mapping</em>...</div>
+<div>... and <strong>maybe</strong> a little about <a href='https://mapbox.com/'>Mapbox</a>, too.</div>
+<div>I <em>also</em> want to reinforce the idea that <strong>maps are hard</strong>...</div>
+<div>... but totally <em>worth it</em>.</div>
+<div>So let's start <em>there</em> with one of my <strong>favorite</strong> web maps.</div>
+<div data-bodyclass='hiframe'><iframe width='100%' src='https://www.mapbox.com/bites/00094/' frameborder='0' allowfullscreen></iframe></div>
+<div>Let's talk about <strong>what's going on</strong> here.</div>
+<div><em>First of all</em>, the <strong>entire map</strong> is housed in a <em>map container</em> in a <strong>div</strong>.</div>
+<div>We have that <strong>map container</strong> thanks to our <em>web mapping library</em>: <a href='https://mapbox.com/mapbox.js'>Mapbox.js</a>!</div>
+<div><strong>Mapbox.js</strong> contains a <em>ton</em> of useful web mapping functions.</div>
+<div><em>Chief</em> among them is <strong>loading map tiles</strong>.</div>
+<div><strong>"What are map tiles?"</strong> you ask?</div>
+<div data-bodyclass='puppy'>Well I'd be <em>happy</em> to tell you!</div>
+<div>Let's go <strong>back in time</strong>.</div>
+<div data-bodyclass='mapquest'><br><br><br><em>In 1996, Mapquest launched its web service.</em></div>
+<div>Directions for driving! <em>Online!</em> <strong>Wow!</strong></div>
+<div>The problem: it was <strong>slow</strong> to load :(.</div>
+<div>Mapquest required a <em>full page refresh</em> to scroll or zoom and was always <strong>aligned to map image boundaries</strong>.</div>
+<div>Then, in 2005, came <em>Google Maps</em>. This revolutionized <strong>everything</strong>.</div>
+<div data-bodyclass='old-google'></div>
+<div><em>But what was the revolution?</em><br>Was it the <strong>interface</strong>?<br>The <strong>red marker</strong>?<br>The <strong>weather widget</strong>?</div>
+<div>No!</div>
+<div>It was the <em>tile. <img src="./images/toner.jpg"></em></div>
+<div>In particular, the <strong>raster</strong> tile.</div>
+<div><em>Raster tiles</em> are 256px x 256px <strong>PNG</strong> files that are <em>stored</em> on the server and <em>served</em> to the browser on request.</div>
+<div><strong>Each tile</strong> is <em>one piece</em> of the map in a <strong>grid</strong> of pieces.</div>
+<div>You may think of this as a <em>basemap</em>.</div>
+<div data-bodyclass="slippy-map">(This kind of map is colloquially called a <strong>slippy map</strong>.)</div>
+<div data-bodyclass='tile-loading'><strong>Only</strong> the tiles in the <em>current map view</em> are requested and loaded. This makes modern web maps <strong>super hella fast</strong>.</div>
+<div>Raster tiles are available at <em>preset zoom levels</em> with a <strong>different</strong> set of tiles at each zoom.</div>
+<div data-bodyclass='zoom0'><em>Zoom level 0: one tile for the world.</em></div>
+<div><strong>Number of tiles</strong> = <em>2^z</em> x <em>2^z</em>.</div>
+<div data-bodyclass='zoom1'><em>Zoom level 1: 4 tiles for the world.</em></div>
+<div data-bodyclass='zoom2345'><br><br><br><em>Zoom level 2, 3, 4, 5</em></div>
+<div>This was <strong>innovative</strong> in 2005...</div>
+<div>... but it's also <em>limiting</em>, <strong>especially</strong> now.</div>
+<div>More <em>recently</em>, we've graduated to <a href='https://www.mapbox.com/developers/vector-tiles/'>vector tiles</a>.</div>
+<div>Vector tiles are <strong>similar</strong> to raster tiles...</div>
+<div>... but <em>instead</em> of creating <strong>tiled images</strong>, we create <em>tiled vector data</em> that can be <strong>styled</strong> in the browser.</div>
+<div>Roads, <strong>parks</strong>, <em>water bodies</em>, bike paths, <strong>points of interest</strong>, <em>state boundaries</em>...</div>
+<div>... all of this is <strong>vector data</strong> with <em>attributes</em> attached to it.</div>
+<div data-bodyclass='geojson'></div>
+<div>Vector tiles <em>store</em> all of this information, <strong>attributes</strong> included, as <em>protocol buffers</em>, or <em>PBF</em> files.</div>
+<div><strong>Protocol buffers</strong> are <em>super lightweight</em> and <em>compact</em>.</div>
+<div>So vector tiles are one of the <strong>super awesome</strong> <em>open source</em> components of web maps.</div>
+<div>They are the <strong>foundation</strong>.</div>
+<div>And <em>Mapbox.js</em> is what makes them <strong>possible</strong>!</div>
+<div>So back to our <em>example</em>...</div>
+<div data-bodyclass='hiframe'><iframe width='100%' src='https://www.mapbox.com/bites/00094/' frameborder='0' allowfullscreen></iframe></div>
+<div><strong>Where</strong> did these <em>map tiles</em> come from?</div>
+<div>They <em>seem</em> to be highlighting <strong>bike routes</strong>.</div>
+<div>(<em>Capital Bike Share stations</em> too, but these features are <strong>interactive</strong> and <em>not</em> part of the underlying style.)</div>
+<div>They're <em>quite</em> aesthetically pleasing!</div>
+<div><strong>These tiles</strong> were created with our <em>desktop design tool</em>, <a href='https://mapbox.com/mapbox-studio'>Mapbox Studio</a>.</div>
+<div data-bodyclass='studio'></div>
+<div>Using a <strong>styling language</strong> called <a href='https://github.com/mapbox/carto/blob/master/docs/latest.md'>CartoCSS</a>, you can <em>style</em> any <strong>vector data</strong> you wish.</div>
+<div>(It comes <em>pre-loaded</em> with <strong>three</strong> Mapbox-curated <a href='https://mapbox.com/developers/vector-tiles'>datasets</a> but you can <em>add your own</em> if you want.)</div>
+<div>From Mapbox Studio, you can <strong>upload a style</strong> to your account and <em>use it</em> in <strong>Mapbox.js</strong>, like in <em>this example</em>.</div>
+<div data-bodyclass='init'></div>
+<div>So when the <strong>map container</strong> on your page makes a <em>request</em> to <pre><span>GET</span></pre> the map tiles...</div>
+<div>... the <strong>custom style</strong> is being applied to the associated <em>vector tiles</em> to render <strong>tiled images</strong> in the container.</div>
+<div data-bodyclass='hiframe'><iframe width='100%' src='https://api.tiles.mapbox.com/v4/duncangraham.b134a19e/page.html?access_token=pk.eyJ1IjoiZHVuY2FuZ3JhaGFtIiwiYSI6IlJJcWdFczQifQ.9HUpTV1es8IjaGAf_s64VQ#16/38.9106/-77.0367' frameborder='0' allowfullscreen></iframe></div>
+<div><em>Boom!</em> <strong>Tiles</strong> in a <em>map</em>!</div>
+<div><strong>Awesome.</strong> So <em>what else</em> is in this example?</div>
+<div>We have <strong>two markers</strong> that we can <em>move around</em>: the <strong>origin point</strong> and the <em>destination point</em>.</div>
+<div data-bodyclass='hiframe'><iframe width='100%' src='https://www.mapbox.com/bites/00094/' frameborder='0' allowfullscreen></iframe></div>
+<div data-bodyclass='marker1'></div>
+<div>In the code, we create a <strong>marker icon</strong> with the <a href='https://www.mapbox.com/mapbox.js/api/v2.2.1/l-mapbox-marker-icon/'>L.mapbox.marker.icon</a> constructor and add it to an <a href='https://www.mapbox.com/mapbox.js/api/v2.2.1/l-marker/'>L.marker</a> object.</div>
+<div>The <em>styling properties</em> for the icon come from <a href='https://mapbox.com/maki'>Maki</a>, an <strong>icon font</strong>, and the <a href='https://github.com/mapbox/simplestyle-spec'>Mapbox simplestyle-spec</a>.</div>
+<div>Pause. Are you <em>noticing a pattern</em>?</div>
+<div>This <strong>whole process</strong> is made up of <em>tiny</em>, <em>self-contained</em> components</div>
+<div data-bodyclass='mapbox-github-public'>many of them <strong>open source</strong></div>
+<div>that <em>work together</em> to build these <strong>seemingly simple</strong> mapping applications.</div>
+<div>Anyway.</div>
+<div>We also give the marker a <em>location</em> to draw itself and flag it as <strong>draggable</strong> so we can <em>change</em> the starting point of our trip.</div>
+<div>We then create a <strong>second marker</strong> that has a <em>different style</em> but is <strong>also draggable</strong>.</div>
+<div data-bodyclass='marker2'></div>
+<div>Then we add <em>both of them</em> to the map.</div>
+<div data-bodyclass='addtomap'></div>
+<div><strong>Sweet</strong>. We have a <em>map</em> with <strong>tiles</strong> and <em>two draggable markers</em>.</div>
+<div>What else?</div>
+<div data-bodyclass='hiframe'><iframe width='100%' src='https://www.mapbox.com/bites/00094/' frameborder='0' allowfullscreen></iframe></div>
+<div>When we <strong>move</strong> the markers, there are some <em>directions</em> that appear on the map.</div>
+<div>There are <em>walking directions</em> from the <strong>markers</strong> to the nearest <em>Capital Bike Share stations</em>...</div>
+<div>... and there are <strong>cycling directions</strong> between those stations.</div>
+<div>That's actually <strong>four separate things</strong> the map is doing.</div>
+<div>(Remember when I said <em>maps are hard</em>?)</div>
+<div>1. <strong>Adding</strong> the bike share stations to the map</div>
+<div>2. Locating the nearest station to each marker</div>
+<div>3. Generating walking directions between the markers and the stations</div>
+<div>4. Generating the bike directions between the stations</div>
+<div>The <strong>bike share stations</strong> are housed in a <em>GeoJSON</em> file.</div>
+<div><em>GeoJSON</em> is an extension of <a href="http://json.org">JSON</a>, which stands for <strong>JavaScript Object Notation</strong>.</div>
+<div>Because <em>GeoJSON</em> is just <strong>JavaScript</strong>, it can easily be used in <em>web maps</em>!</div>
+<div data-bodyclass='geojson'></div>
+<div>This example uses <a href='https://jquery.com'>jQuery</a> to <strong>load</strong> the GeoJSON and then <em>adds</em> them to the map with <pre><span>L.marker</span></pre> objects.</div>
+<div data-bodyclass='stations'></div>
+<div>Just to <em>digress</em> into one of the <strong>many</strong> silly nuances of <em>web mapping</em>...</div>
+<div><strong>Notice</strong> what's <em>going on</em> in this code with the <strong>latitude and longitude</strong> pair.</div>
+<div data-bodyclass='stations'></div>
+<div>There is <em>much disagreement</em> about whether <strong>coordinates</strong> should be written <pre><span>[lat, lon]</span></pre> or <pre><span>[lon, lat]</span></pre>.</div>
+<div><strong>GeoJSON</strong> prefers <pre><span>[lon, lat]</span></pre>, but <a href='https://leafletjs.com'>Leaflet</a> (and thus <em>Mapbox.js</em>) both prefer <pre><span>[lat, lon]</span></pre>.</div>
+<div>This is <strong>annoying</strong>.</div>
+<div data-bodyclass='puppy'>Moving on.</div>
+<div>Once the <strong>bike share locations</strong> are <em>added</em> to the map, we have to <strong>locate</strong> the <em>nearest one</em> to the <strong>start</strong> and <strong>end</strong> markers.</div>
+<div>To do this, we use <em>another</em> awesome <strong>open source</strong> library called <a href='http://turfjs.org'>Turf.js</a>.</div>
+<div data-bodyclass='turf'></div>
+<div><strong>Turf.js</strong> is a <em>spatial analysis</em> library.</div>
+<div><strong>Spatial analysis</strong> is used to <em>describe relationships</em> between <strong>geographic data</strong>.</div>
+<div><em>This example</em> uses the <a href='http://turfjs.org/static/docs/module-turf_nearest.html'>turf-nearest</a> function to find the <strong>nearest</strong> station to the markers.</div>
+<div>This operation happens <em>dynamically</em> <strong>every time</strong> the markers are dragged.</div>
+<div>And it's like, <strong>super hella fast</strong>!</div>
+<div data-bodyclass='hiframe'><iframe width='100%' src='https://www.mapbox.com/bites/00094/' frameborder='0' allowfullscreen></iframe></div>
+<div>So that leaves our <em>last</em> little <strong>open source</strong> component: the <a href='https://mapbox.com/developers/api/directions/'>Mapbox Directions API</a>!</div>
+<div>Routing is <strong>kinda complicated</strong> to implement but <em>actually quite straightforward</em> in theory.</div>
+<div><strong>Every path</strong> (road, trail, etc.) has a <em>bunch</em> of attributes.</div>
+<div>Like <strong>speed limit</strong>, <em>grade</em>, bike lanes, <strong>length</strong>...</div>
+<div>Each of these <strong>attributes</strong> has has a <em>cost</em> associated with it.</div>
+<div>The role of the <strong>routing algorithm</strong> is to find the <em>lowest cost path</em> from <strong>point A</strong> to <strong>point B</strong>.</div>
+<div>That means <em>costs</em> are assigned based on the <strong>goal</strong> of the routing.</div>
+<div>Not just <em>shortest distance</em>, but also <strong>faster roads</strong>.</div>
+<div><em>Walking</em> directions? Roads with <strong>sidewalks</strong> are less costly.</div>
+<div>Where do these <em>attributes</em> come from?</div>
+<div>The <strong>Mapbox Directions API</strong> is built on top of the <em>Open Source Routing Machine (OSRM)</em>, an <strong>open source</strong> project built on top of <a href='https://osm.org'>OpenStreetMap</a>.</div>
+<div><em>OpenStreetMap</em> is a <strong>crowd-sourced</strong> map of the world -- a <em>huge</em> dataset full of <strong>interesting</strong> things.</div>
+<div data-bodyclass='osm'></div>
+<div>It is also a <em>pretty comprehensive</em> resource of <strong>road data</strong>.</div>
+<div><em>OpenStreetMap</em> features are defined by <strong>tags</strong>.</div>
+<div data-bodyclass='taginfo'></div>
+<div>The <em>Directions API routing algorithms</em> assign <strong>costs</strong> to each <em>tag</em>.</div>
+<div>Boom! <strong>Bike directions</strong>!</div>
+<div>So the <em>open source project tally</em> right now stands at:</div>
+<div>Mapbox.js, <em>Turf.js</em>, <strong>OSRM</strong>, vector tiles, <em>GeoJSON</em>...</div>
+<div>That's it, right?</div>
+<div>Nope! <em>One more!</em></div>
+<div data-bodyclass='hiframe'><iframe width='100%' src='https://www.mapbox.com/bites/00094/' frameborder='0' allowfullscreen></iframe></div>
+<div data-bodyclass='mindblown'></div>
+<div>So <strong>what's going on</strong> here?</div>
+<div>This is the <a href='https://mapbox.com/developers/api/surface'>Mapbox Surface API</a>. It's for <em>inspectng vector data</em>.</div>
+<div>In <strong>this example</strong>, we hit the API along an <em>array of points</em> of the <strong>calculated bike route</strong>...</div>
+<div>... and we hit against a <strong>vector terrain</strong> dataest that is <em>pre-curated</em> by Mapbox, <a href='https://mapbox.com/developers/vector-tiles'>Mapbox Terrain</a>.</div>
+<div>The <strong>Surface API</strong> returns <em>elevation</em> data from the <strong>Mapbox Terrain</strong> dataset.</div>
+<div>Then the <em>percent grade</em> along the route is <strong>calculated</strong> and <strong>displayed</strong> on the map.</div>
+<div><em>No more surprises.</em> That's the whole map.</div>
+<div>So, <strong>concisely</strong>, what does it do?</div>
+<div>- Displays <em>vector tiles</em> with <strong>bike routes</strong></div>
+<div>- <strong>Pans</strong> and <em>zooms</em></div>
+<div>- Shows the <strong>Capital Bike Share</strong> stations</div>
+<div>- Has <em>draggable markers</em> for <strong>origin</strong> and <strong>destination</strong></div>
+<div>- Finds closest <em>bike share station</em> to <strong>origin</strong> and <strong>destination</strong></div>
+<div>- Shows <em>walking directions</em> to/from bike share stations</div>
+<div>- Shows a <strong>bike route</strong> between bike stations</div>
+<div>- Shows <em>elevation</em> and <strong>percent grade change</strong> along the bike route</div>
+<div>That's a <strong>lot</strong> of things.</div>
+<div>And that's just <em>scratching the surface</em> of what <strong>open source mapping tools</strong> can do.</div>
+<div>Everything from the <em>static map APIs</em>to the <strong>crazy awesome</strong> <a href='https://mapbox.com/mobile'>native GL maps</a> is <em>new and changing</em>.</div>
+<div><strong>Spatial problems</strong> are <em>everywhere</em></div>
+<div>And more <strong>elegant</strong>, <em>open source</em> tools we have to work on them, the <strong>better</strong>!</div>
+<div>(If we have <em>time</em>, I'll show off some <strong>other</strong> cool map stuff.)</div>
+<div>Thanks!</div>
+<div><a href='https://twitter.com/lyzidiamond'>@lyzidiamond</a> | lyzi@mapbox.com</div>
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-47757349-1', 'lyzidiamond.com');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
